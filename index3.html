@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi niña linda ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff0f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #4a4a4a;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 2px solid #ffb3c1;
+        }
+
+        h1 { color: #ff4d6d; margin-bottom: 15px; font-size: 28px; }
+        p { font-size: 1.1em; line-height: 1.6; }
+
+        .input-group { margin-top: 30px; }
+
+        input[type="text"] {
+            width: 85%;
+            padding: 15px;
+            border: 2px solid #ffb3c1;
+            border-radius: 12px;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"]:focus { 
+            border-color: #ff4d6d; 
+            box-shadow: 0 0 10px rgba(255, 77, 109, 0.2);
+        }
+
+        button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        button:hover { 
+            background-color: #c9184a; 
+            transform: translateY(-2px);
+        }
+
+        .heart { 
+            color: #ff4d6d; 
+            font-size: 60px; 
+            margin-bottom: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        #mensajeConfirmacion {
+            display: none;
+            margin-top: 25px;
+            color: #c9184a;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="heart">❤️</div>
+    <h1>¡Ya casi 6 meses!</h1>
+    <p>Enero va a ser muy especial y quiero que sea inolvidable...</p>
+    <p><strong>Qué te gustaría que te regale?</strong></p>
+
+    <div class="input-group">
+        <input type="text" id="regalo" placeholder="Solo pone lo que queres">
+        <br>
+        <button onclick="enviarDeseo()">Enviar a mi amor</button>
+    </div>
+
+    <p id="mensajeConfirmacion">¡Excelente elección! 😍 Preparando la sorpresa... te amo.</p>
+</div>
+
+<script>
+    function enviarDeseo() {
+        const regalo = document.getElementById('regalo').value;
+        const miNumero = "50379677791"; // Tu número ya configurado
+
+        if (regalo.trim() === "") {
+            alert("Escribí algo gordita");
+            return;
+        }
+
+        // Formateamos el mensaje para WhatsApp
+        const mensaje = `Hola mi amor quisiera que me des: ${regalo}`;
+        const url = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensaje)}`;
+        
+        // Mostrar mensaje de éxito en la web
+        document.getElementById('mensajeConfirmacion').style.display = 'block';
+        
+        // Redirigir a WhatsApp después de un segundo
+        setTimeout(() => {
+            window.open(url, '_blank');
+        }, 1200);
+    }
+</script>
+
+</body>
+</html>
